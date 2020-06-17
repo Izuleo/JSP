@@ -18,7 +18,14 @@
     
     <title>반려동물 등록</title>
 </head>
+<!-- =========================================================================== -->
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
+  
+  <!-- 헤더 -->
+  <section id='header'>
+    <jsp:include page="header.jsp" flush='false'/>
+  </section>
+  
   <div class="card align-middle" style="width:20rem; border-radius:20px;">
     <div class="card-title" style="margin-top:30px;">
 			<h2 class="card-title text-center" style="color:black;">반려동물 등록</h2>
@@ -27,7 +34,7 @@
     <div class="card-body">
       <form class="form-signin" method="post" onSubmit="logincall();return false">
         <div class="media border p-3">
-          <img src="img.jpg" alt="picture" class="mr-3 mt-3 rounded-circle" style="width:100px; height:100px;">
+          <img src="img.jpg" alt="picture" class="mr-3 mt-3 rounded-circle center-block" style="width:100px; height:100px;">
         </div>
         
         <label for="inputName" class="name">이름</label>
@@ -40,7 +47,7 @@
         <!-- 품종선택 -->
         <div class="dropdown">
           <label for="inputKind" class="kind">품종</label><br>
-          <button type="button" class="btn" data-toggle="dropdown">
+          <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
                        품종을 선택해주세요.
           </button>
           <div class="dropdown-menu">
@@ -59,7 +66,7 @@
         <!-- 성별 -->
         <div class="dropdown">
           <label for="inputGender" class="gender">성별</label><br>
-          <button type="button" class="btn" data-toggle="dropdown">
+          <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
                          성별을 선택해주세요.
           </button>
           <div class="dropdown-menu">
@@ -71,7 +78,7 @@
         <!-- 알러지 유무 -->
         <div class="dropdown">
           <label for="inputAllergy" class="allergy">알러지가 있습니까?</label><br>
-          <button type="button" class="btn" data-toggle="dropdown">
+          <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
                          알러지 유무를 선택해주세요.
           </button>
           <div class="dropdown-menu">
@@ -84,5 +91,10 @@
       </form>
 		</div>
   </div>
+  
+  <!-- 바텀 -->
+  <section id='footer'>
+    <jsp:include page="footer.jsp" flush='false'/>
+  </section>
 </body>
 </html>

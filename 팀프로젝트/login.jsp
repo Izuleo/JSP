@@ -19,8 +19,15 @@
     <title>로그인</title>
   </head>
   
-  
+<!-- ================================================================================== -->
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
+  
+  <!-- 헤더 -->
+  <section id='header'>
+    <jsp:include page="header.jsp" flush='false'/>
+  </section>
+  
+  
 	<div class="card align-middle" style="width:20rem; border-radius:20px;">
 		<div class="card-title" style="margin-top:30px;">
 			<h2 class="card-title text-center" style="color:black;">로그인</h2>
@@ -30,6 +37,7 @@
       <form class="form-signin" method="post" onSubmit="logincall();return false">
         <label for="inputEmail" class="id">아이디</label>
         <input type="text" id="uid" class="form-control" placeholder="아이디" required autofocus><br>
+        
         <label for="inputPassword" class="pw">패스워드</label>
         <input type="password" id="upw" class="form-control" placeholder="패스워드" required><br>
         <div class="checkbox">
@@ -37,18 +45,21 @@
             <input type="checkbox" value="remember-me"> 아이디 기억하기
           </label>
         </div>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block " type="submit">로그인</button>
         
-        <div style="justify-content:center;">
-          <button id="btn-Yes" class="btn" type="submit">아이디 찾기</button>
-          <button id="btn-Yes" class="btn" type="submit">비밀번호 찾기</button>
+        <div class="center-block" style="justify-content:center;">
+          <button id="btn-Yes" class="btn btn-light" type="submit">아이디 찾기</button>
+          <button id="btn-Yes" class="btn btn-light" type="submit">비밀번호 찾기</button>
         </div>
         
       </form>
 		</div>
-		
 	</div>
 
+  <!-- 바텀 -->
+  <section id='footer'>
+    <jsp:include page="footer.jsp" flush='false'/>
+  </section>
     
   </body>
 </html>
