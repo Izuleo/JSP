@@ -1,5 +1,28 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.naming.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+  //1. Context 객체 생성
+  Context initCtx = new InitialContext();
+
+  //2. DataSource 객체 생성
+  DataSource ds = (DataSource)initCtx.lookup("java:comp/env/jdbc/jskim");
+  
+  //3. CP에서 connection 가져오기
+  Connection con = ds.getConnection();
+  
+  String sql = "SELECT * FROM DOG";
+  Statement st = con.createStatement();
+  
+  //4. 반환 객체
+  ResultSet rs = st.executeQuery(sql);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +49,13 @@
   	<title>견종  페이지</title>
 </head>
 	<body>
+	
+	<%
+	 //5.결과 집합처리
+	 while(rs.next()){
+  	  String name = rs.getString("NAME");
+   	  String summary = rs.getString("SUMMARY");
+ 	%>
 
   <!-- 헤더 -->
   <section id='header'>
@@ -48,8 +78,8 @@
         <div class="card h-100">
           <img class="card-img-top" src="http://placehold.it/500x325" alt=""> 
           <div class="card-body">
-            <h4 class="card-title">비숑</h4>
-            <p class="card-text">비숑 소개글 20자 정도</p>
+            <h4 class="card-title"><%=name %></h4>
+            <p class="card-text"><%=summary %></p>
           </div> 
           <div class="card-footer">
             <a href="#" class="btn btn-primary">더보기!</a>
@@ -61,8 +91,8 @@
         <div class="card h-100">
           <img class="card-img-top" src="http://placehold.it/500x325" alt="">
           <div class="card-body">
-            <h4 class="card-title">포메라니안</h4>
-            <p class="card-text">포메라니안 20자</p>
+            <h4 class="card-title">그레이 하운드</h4>
+            <p class="card-text">그레이 하운드 설명</p>
           </div>
           <div class="card-footer">
             <a href="#" class="btn btn-primary">더보기!</a>
@@ -181,6 +211,13 @@
   <section id='footer'>
     <jsp:include page="footer.jsp" flush='false'/>
   </section>
+  
+  <% }
+ //6. 객체 연결 해제
+ rs.close();
+ st.close();
+ con.close();
+ %>
 </body>
 
 </html>
