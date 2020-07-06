@@ -19,82 +19,87 @@
     <title>반려동물 등록</title>
 </head>
 <!-- =========================================================================== -->
-  <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
-  
+  <body>
   <!-- 헤더 -->
   <section id='header'>
     <jsp:include page="header.jsp" flush='false'/>
   </section>
   
-  <div class="card align-middle" style="width:20rem; border-radius:20px;">
-    <div class="card-title" style="margin-top:30px;">
-			<h2 class="card-title text-center" style="color:black;">반려동물 등록</h2>
+		<div class="container">
+			<div class="d-flex justify-content-center h-80">
+				<div class="card" style="border-radius:20px">
+					<div class="card-title" style="margin-top:30px;">
+						<h2 class="card-title text-center" style="color:black;">반려동물 등록</h2>
+					</div>
+				
+					<div class="card-body">
+			 		<form class="form-signin" method="post" onSubmit="logincall();return false">
+        		<div class="preview text-center">
+                <img src="img.jpg" alt="Preview Image" width="200" height="200"/>
+                <div class="browse-button">
+                    <i class="fa fa-pencil-alt"></i>
+                    <input class="browse-input" type="file" required name="UploadedFile" id="UploadedFile"/>
+                </div>
+                <span class="Error"></span>
+            </div>
+        
+       		 <label for="inputName" class="name">이름</label>
+      		 <input type="text" id="uname" class="form-control" placeholder="이름을 입력해주세요." required autofocus><br>
+        
+       		 <!-- 생일 -->
+        	 <label for="inputBir" class="bir">생일</label>
+       		 <input type="date" id="ubir" class="form-control" required autofocus><br>
+        
+        		<!-- 품종선택 -->
+      			<div class="form-group">
+         		  <label for="inputKind" class="kind">품종</label>
+         		  <select class="form-control btn btn-outline-primary">
+           			<option value="0">품종을 선택해주세요.</option>
+                <option value="1">노르웨이 숲</option>
+                <option value="2">러시안블루</option>
+                <option value="3">뱅갈</option>
+                <option value="4">샴</option>
+                <option value="5">브리티시 숏헤어</option>
+                <option value="6">아메리칸 숏헤어</option>
+                <option value="7">스코티시 폴드</option>
+                <option value="8">터키시 반</option>
+                <option value="9">토이거</option>
+           		</select>
+        		</div>
+        
+       		 <!-- 성별 -->
+        	 <div class="form-group" >
+         		 <label for="gender" class="gender">성별</label>
+          	 <select class="form-control btn btn-outline-primary">
+           			<option value="0">성별을 선택해주세요.</option>
+                <option value="1">여아</option>
+                <option value="2">남아</option>
+           	 </select>
+       			</div>
+        
+       		 <!-- 알러지 유무 -->
+      		  <div class="form-group">
+        		  <label for="Allegy" class="allegy">알러지가 있습니까?</label>
+           		<select class="form-control btn btn-outline-primary">
+           			<option value="0">알러지 유무를 선택해주세요.</option>
+                <option value="1">있음</option>
+                <option value="2">없음</option>
+                <option value="3">모르겠음</option>
+           		</select>
+       			</div><br><br>
+        
+        		<button id="btn-OK" class="btn btn-lg btn-primary btn-block" type="submit" 
+      		  onclick="location.href='mypage.jsp'">작성완료</button>
+      	</form>
+      	
+			</div>
 		</div>
-		
-    <div class="card-body">
-      <form class="form-signin" method="post" onSubmit="logincall();return false">
-        <div class="media border p-3">
-          <img src="img.jpg" alt="picture" class="mr-3 mt-3 rounded-circle center-block" style="width:100px; height:100px;">
-        </div>
-        
-        <label for="inputName" class="name">이름</label>
-        <input type="text" id="uname" class="form-control" placeholder="이름을 입력해주세요." required autofocus><br>
-        
-        <!-- 생일 -->
-        <label for="inputBir" class="bir">생일</label>
-        <input type="date" id="ubir" class="form-control" required autofocus><br>
-        
-        <!-- 품종선택 -->
-        <div class="dropdown">
-          <label for="inputKind" class="kind">품종</label><br>
-          <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
-                       품종을 선택해주세요.
-          </button>
-          <div class="dropdown-menu">
-              <a class="dropdown-item">노르웨이 숲</a>
-              <a class="dropdown-item">러시안블루</a>
-              <a class="dropdown-item">뱅갈</a>
-              <a class="dropdown-item">샴</a>
-              <a class="dropdown-item">브리티시 숏헤어</a>
-              <a class="dropdown-item">아메리칸 숏헤어</a>
-              <a class="dropdown-item">스코티시 폴드</a>
-              <a class="dropdown-item">터키시 반</a>
-              <a class="dropdown-item">토이거</a>
-          </div>
-        </div><br>
-        
-        <!-- 성별 -->
-        <div class="dropdown">
-          <label for="inputGender" class="gender">성별</label><br>
-          <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
-                         성별을 선택해주세요.
-          </button>
-          <div class="dropdown-menu">
-              <a class="dropdown-item">여아</a>
-              <a class="dropdown-item">남아</a>
-          </div>
-        </div><br>
-        
-        <!-- 알러지 유무 -->
-        <div class="dropdown">
-          <label for="inputAllergy" class="allergy">알러지가 있습니까?</label><br>
-          <button type="button" class="btn btn-outline-primary" data-toggle="dropdown">
-                         알러지 유무를 선택해주세요.
-          </button>
-          <div class="dropdown-menu">
-              <a class="dropdown-item">있음</a>
-              <a class="dropdown-item">없음</a>
-          </div>
-        </div><br><br>
-        
-        <button id="btn-OK" class="btn btn-lg btn-primary btn-block" type="submit">작성완료</button>
-      </form>
-		</div>
-  </div>
-  
-  <!-- 바텀 -->
+	</div>
+</div>
+ <!-- 바텀 -->
   <section id='footer'>
     <jsp:include page="footer.jsp" flush='false'/>
   </section>
+
 </body>
 </html>

@@ -16,50 +16,79 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script> 
     
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+    
+    
     <title>로그인</title>
+    	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   
 <!-- ================================================================================== -->
-  <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
-  
-  <!-- 헤더 -->
+ <body>
+	<!-- 헤더 -->
   <section id='header'>
     <jsp:include page="header.jsp" flush='false'/>
   </section>
   
-  
-	<div class="card align-middle" style="width:20rem; border-radius:20px;">
-		<div class="card-title" style="margin-top:30px;">
-			<h2 class="card-title text-center" style="color:black;">로그인</h2>
+		<div class="container">
+			<div class="d-flex justify-content-center h-80">
+				<div class="card" style="border-radius:20px">
+					<div class="card-title" style="margin-top:30px;" >
+						<h2 class="card-title text-center" style="color:black;">로그인</h2>
+					</div>
+			
+					<div class="card-body" >
+      		<form class="form-signin" method="post" onSubmit="logincall();return false">
+<!-- ======================================아이디=============================================================== -->
+        		<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-user"></i></span>
+								</div>
+								<input type="text" id="uid" class="form-control" placeholder="아이디">
+						</div>
+<!-- =======================================비번=============================================================== -->
+        		<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input type="password" id="upw" class="form-control" placeholder="비밀번호" required autofocus>
+						</div>
+					
+        		<div class="checkbox">
+          		<label>
+           		 <input type="checkbox" value="remember-me"> 아이디 기억하기
+         		 </label>
+        		</div><br>
+        
+        		<button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+        
+      	 	</form> <!-- 회원가입 끝 -->
+				</div>
+				
+				<!-- 로그인 푸터 -->
+				<div class="card-footer">
+						<div class="d-flex justify-content-center links">
+							아직 가입하지 않으셨나요?<a href="#" onclick="location.href='membership.jsp'"> Sign Up</a>
+						</div>
+						<div class="d-flex justify-content-center">
+							<a href="#">비밀번호 찾기</a>
+						</div>
+				</div>
+			</div>
 		</div>
-		
-		<div class="card-body">
-      <form class="form-signin" method="post" onSubmit="logincall();return false">
-        <label for="inputEmail" class="id">아이디</label>
-        <input type="text" id="uid" class="form-control" placeholder="아이디" required autofocus><br>
-        
-        <label for="inputPassword" class="pw">패스워드</label>
-        <input type="password" id="upw" class="form-control" placeholder="패스워드" required><br>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> 아이디 기억하기
-          </label>
-        </div>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block " type="submit">로그인</button>
-        
-        <div class="center-block" style="justify-content:center;">
-          <button id="btn-Yes" class="btn btn-light" type="submit">아이디 찾기</button>
-          <button id="btn-Yes" class="btn btn-light" type="submit">비밀번호 찾기</button>
-        </div>
-        
-      </form>
-		</div>
-	</div>
-
-  <!-- 바텀 -->
+	</div>	
+	
+	<!-- 바텀 -->
   <section id='footer'>
-    <jsp:include page="footer.jsp" flush='false'/>
-  </section>
-    
-  </body>
+   	<jsp:include page="footer.jsp" flush='false'/>
+ 	</section>
+</body>
 </html>
