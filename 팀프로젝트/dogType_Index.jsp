@@ -7,21 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%
-  //1. Context 객체 생성
-  Context initCtx = new InitialContext();
-  //2. DataSource 객체 생성
-  DataSource ds = (DataSource)initCtx.lookup("java:comp/env/jdbc/jsPSK");
-  
-  //3. CP에서 connection 가져오기
-  Connection con = ds.getConnection();
-  
-  String sql = "SELECT * FROM KIND";
-  Statement st = con.createStatement();
-  
-  //4. 반환 객체
-  ResultSet rs = st.executeQuery(sql);
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,37 +35,19 @@
 </head>
 <body>
 
- 	<!-- 페이지 내용 -->
-    <div class="row text-center ">
-	  <%
-	 //5.결과 집합처리
-	 while(rs.next()){
-  	  String name1 = rs.getString("KIND_NAME");
-   	  String summary1 = rs.getString("CONTENT");
-	 	%>
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">  <!-- 카드자체 -->
-          <img class="card-img-top" src="http://placehold.it/500x325" alt=""> 
-          <div class="card-body"> <!-- 카드 설명 -->
-            <h4 class="card-title"><%=name1 %></h4>
-            <p class="card-text"><%=summary1 %></p>
-          </div> 
-          <!-- 더보기 -->
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">더보기!</a>
-          </div>  
-          
-        </div>
-      </div>
-     
-<% }
- //6. 객체 연결 해제
- rs.close();
- st.close();
- con.close();
-%>
+ 		<jsp:include page='header.jsp' flush='false'/>
 
-   </div>
-
+	<div class="container">
+		<!-- 페이지 헤더 -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">댕댕이!</h1>
+      <p class="lead">댕댕이 소개글 100자</p>
+      <a href="#" class="btn btn-primary btn-lg">뭔 버튼하지 필요없으면 뺌</a>
+    </header>
+		<!-- 페이지 내용  -->
+		<jsp:include page='dogType.jsp' flush='false'/>
+  </div>
+  
+  		<jsp:include page='footer.jsp'  flush='false'/>SS
 </body>
 </html>
